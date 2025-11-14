@@ -10,5 +10,8 @@ homepage = "https://github.com/grfwings/adv"
 repository = "https://github.com/grfwings/adv"
 categories = ["command-line-utilities"]
 
-[dependencies]
-fastrand = "2.3.0"
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
