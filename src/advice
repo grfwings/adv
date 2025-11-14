@@ -89,3 +89,18 @@ Indent to show the logical structure of a program.
 Debugging is twice as hard as writing the code in the first place. 
 Therefore, if you write the code as cleverly as possible, you are, 
 by definition, not smart enough to debug it.
+%
+Consider how you would solve your immediate problem without adding anything new.
+%
+Any organization that designs a system (defined broadly) will produce a design whose structure is a copy of the organization's communication structure.
+%
+A complex system that works has evolved from a simple system that worked.
+A complex system built from scratch won’t work.
+%
+With a sufficient number of users of an API, it does not matter what you promise in the contract: all observable behaviors of your system will be depended on by somebody.
+%
+Premature optimization is the root of all evil.
+%
+Given enough eyeballs, all bugs are shallow.
+%
+Be conservative in what you send, liberal in what you accept.
