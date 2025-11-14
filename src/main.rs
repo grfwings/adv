@@ -9,7 +9,7 @@ fn main() {
     
     let advice: Vec<&str> = contents.trim().split("\n%\n").collect();
 
-    let rng: usize = rand::thread_rng().gen_range(0..advice.len());
+    let rng: usize = rand::rng().random_range(0..advice.len());
 
     println!("{}", advice[rng]);
 }
