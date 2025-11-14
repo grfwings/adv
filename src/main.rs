@@ -3,62 +3,10 @@
 #![no_std]
 #![no_main]
 
-use core::sync::atomic::{self, Ordering};
+mod advice;
 
-const ADVICE: &[&str] = &[
-    "Write clearly - don't be too clever.",
-    "Say what you mean, simply and directly.",
-    "Use library functions.",
-    "Avoid temporary variables.",
-    "Write clearly - don't sacrifice clarity for \"efficiency.\"",
-    "Let the machine do the dirty work.",
-    "Replace repetitive expressions by calls to a common function.",
-    "Parenthesize to avoid ambiguity.",
-    "Choose variable names that won't be confused.",
-    "Avoid unnecessary branches.",
-    "Use the good features of a language; avoid the bad ones.",
-    "Use the \"telephone test\" for readability.",
-    "Make your programs read from top to bottom.",
-    "Use arrays to avoid repetitive control sequences.",
-    "Don't stop with your first draft.",
-    "Modularize. Use subroutines.",
-    "Each module should do one thing well.",
-    "Make sure every module hides something.",
-    "Don't patch bad code - rewrite it.",
-    "Write and test a big program in small pieces.",
-    "Test input for validity and plausibility.",
-    "Make sure input cannot violate the limits of the program.",
-    "Identify bad input; recover if possible.",
-    "Make input easy to prepare and output self-explanatory.",
-    "Localize input and output in subroutines.",
-    "Make sure all variables are initialized before use.",
-    "[During debugging…] Don't stop at one bug.",
-    "Watch out for off-by-one errors.",
-    "Avoid multiple exits from loops.",
-    "Test programs at their boundary values.",
-    "Program defensively.",
-    "10.0 times 0.1 is hardly ever 1.0.",
-    "Don't compare floating point numbers just for equality.",
-    "Make it right before you make it faster.",
-    "Keep it right when you make it faster.",
-    "Make it clear before you make it faster.",
-    "Don't sacrifice clarity for small gains in \"efficiency.\"",
-    "Keep it simple to make it faster.",
-    "Don't diddle code to make it faster - find a better algorithm.",
-    "Make sure comments and code agree.",
-    "Don't just echo the code with comments - make every comment count.",
-    "Don't comment bad code - rewrite it.",
-    "Use variable names that mean something.",
-    "Indent to show the logical structure of a program.",
-    "Debugging is twice as hard as writing the code in the first place. \nTherefore, if you write the code as cleverly as possible, you are, \nby definition, not smart enough to debug it.",
-    "Consider how you would solve your immediate problem without adding anything new.",
-    "Any organization that designs a system (defined broadly) will produce a design whose structure is a copy of the organization's communication structure.",
-    "A complex system that works has evolved from a simple system that worked.\nA complex system built from scratch won't work.",
-    "With a sufficient number of users of an API, it does not matter what you promise in the contract: all observable behaviors of your system will be depended on by somebody.",
-    "Premature optimization is the root of all evil.",
-    "Given enough eyeballs, all bugs are shallow.",
-    "Be conservative in what you send, liberal in what you accept.",
-];
+use core::sync::atomic::{self, Ordering};
+use advice::ADVICE;
 
 #[panic_handler]
 fn panic(_: &core::panic::PanicInfo) -> ! {
@@ -119,6 +67,9 @@ pub unsafe extern "C" fn memset(s: *mut u8, c: i32, n: usize) -> *mut u8 {
 }
 
 // rust_eh_personality implementation needed by compiler for panic handling
+// This function is used when rust unwinds a stack during a panic, but since
+// we build with panic = "abort", this is never used. Hence, it can be sefely
+// left as an empty method
 #[unsafe(no_mangle)]
 pub extern "C" fn rust_eh_personality() {}
 
