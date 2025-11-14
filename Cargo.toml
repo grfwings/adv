@@ -1,13 +1,13 @@
 [package]
 name = "adv"
-version = "0.1.1"
+version = "0.2.0"
 edition = "2024"
 authors = ["Griffin Evans"]
 license = "UNLICENSE"
 description = "Dispense short programming aphorisms in the style of Unix fortune"
 readme = "README.md"
-homepage = "https://github.com/griffinevans/adv"
-repository = "https://github.com/griffinevans/adv"
+homepage = "https://github.com/grfwings/adv"
+repository = "https://github.com/grfwings/adv"
 categories = ["command-line-utilities"]
 
 [dependencies]
